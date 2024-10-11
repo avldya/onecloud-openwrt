@@ -21,3 +21,6 @@ sed -i 's/OpenWrt/OneCloud/g' package/base-files/files/bin/config_generate
 
 # 替换终端为bash
 sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
+
+# dr_mode 切换为 host
+sed -i '/&usb0 {/,/};/ {s/dr_mode = "otg";/dr_mode = "host";/; /usb-role-switch/d; /role-switch-default-mode = "host";/d}' target/linux/amlogic/files/arch/arm/boot/dts/meson8b-onecloud.dts
